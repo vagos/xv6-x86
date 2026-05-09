@@ -17,7 +17,6 @@ int pindex(struct pstat *pstat, int pid) {
     return -1;
 }
 
-
 void fork_children() {
     for (int i = 0; i < N; i++) {
         int fpid = fork();
