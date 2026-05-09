@@ -62,6 +62,7 @@ find_pid(struct pstat *pstat, int pid)
 }
 
 // Uncomment the below line after you've implemented the "settickets" system call
+// Don't forget to do the same in lotteryschedtest.c
 // #define TICKETS 
 
 int
