@@ -3,9 +3,6 @@
 #include "pstat.h"
 #define N 5
 
-// Uncomment the below line after you've implemented the "settickets" system call
-// #define TICKETS
-
 int tickets[N] = {200, 100, 500, 50, 150};
 int children[N];
 struct pstat pstat;
@@ -26,9 +23,7 @@ void fork_children() {
         int fpid = fork();
 
         if (fpid == 0) {
-            #ifdef TICKETS
-                settickets(tickets[i]);
-            #endif
+            settickets(tickets[i]);
 
             for (;;) {
             }
@@ -84,9 +79,7 @@ void print_info() {
 }
 
 void main(int argc, char *argv[]) {
-    #ifdef TICKETS
-        settickets(1000000);
-    #endif
+    settickets(1000000);
 
     fork_children();
 

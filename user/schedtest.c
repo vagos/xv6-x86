@@ -61,10 +61,6 @@ find_pid(struct pstat *pstat, int pid)
     return -1;
 }
 
-// Uncomment the below line after you've implemented the "settickets" system call
-// Don't forget to do the same in lotteryschedtest.c
-// #define TICKETS 
-
 int
 main(int argc, char *argv[])
 {
@@ -74,18 +70,14 @@ main(int argc, char *argv[])
     int n_tickets[N_C_PROCS]={2,1,300};
     pid_chds[0] = getpid();
 
-#ifdef TICKETS
     settickets(n_tickets[0]);
-#endif
 
     int i; 
     for (i = 1; i < N_C_PROCS; i++) 
     {
         if ((pid_chds[i] = fork()) == 0) 
         {
-#ifdef TICKETS
             settickets(n_tickets[i]);
-#endif
             int n_spin = LTICKS(5);
             spin(n_spin);
             exit();
